@@ -15,7 +15,11 @@ import RotationControl from './rotation-control';
 import { Context } from './util/types';
 import * as PropTypes from 'prop-types';
 
-injectCSS(window);
+// TODO: Remove in next version with breaking changes
+if (!(typeof (window as any).MAPBOX_SKIP_CSS_INJECTION !== 'undefined')
+   || (window as any).MAPBOX_SKIP_CSS_INJECTION === false) {
+    injectCSS(window);
+}
 
 // Hack to get around import issue from external lib, see: https://github.com/Microsoft/TypeScript/issues/9944
 // TODO: Remove this hack once the above issue is fixed
